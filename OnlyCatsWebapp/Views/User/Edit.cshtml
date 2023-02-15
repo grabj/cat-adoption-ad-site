@@ -1,0 +1,99 @@
+﻿@model OnlyCatsWebapp.Core.ViewModels.EditUserViewModel
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+
+    <div class="text-center">
+        <h2>Edit User</h2>
+    </div>
+
+    <div class="row g-5">
+
+        @using(Html.BeginForm("OnPost","User"))
+        {
+
+            <div class="col-md-4">
+                <h4 class="my-3">Roles</h4>
+
+                <div class="my-3">
+
+                    @for (int i = 0; i < @Model.Roles.Count(); i++)
+                    {
+                    <div class="form-check">
+                            @Html.CheckBoxFor(c => @Model.Roles[i].Selected)
+                        
+                        @Html.HiddenFor(h => @Model.Roles[i].Value)
+                         
+                        
+                            @Html.LabelFor(l => @Model.Roles[i].Selected, @Model.Roles[i].Text, new {@class="form-check-label"})
+
+                            @Html.HiddenFor(h => @Model.Roles[i].Text)
+                        
+                    </div>
+                    }
+                </div>
+
+                       <button class="w-100 btn btn-primary btn-lg" type="submit">Save</button>
+            </div>
+        
+        
+        <div class="col col-md-8">
+            <h4 class="my-3">Informations</h4>
+                
+                        <div >
+                        @Html.HiddenFor(h => @Model.User.Id)
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.Email" class="form-control"/>
+                                <label asp-for="@Model.User.Email" class="form-label"></label>
+                                <span asp-validation-for="@Model.User.Email" class="text-danger"></span>
+                                
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.PhoneNumber" class="form-control" />
+                                <label asp-for="@Model.User.PhoneNumber" class="form-label"></label>
+                                <span asp-validation-for="@Model.User.PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.Address" class="form-control" autocomplete="address" aria-required="true" />
+                                <label asp-for="@Model.User.Address"></label>
+                                <span asp-validation-for="@Model.User.Address" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.City" class="form-control" autocomplete="city" aria-required="true" />
+                                <label asp-for="@Model.User.City"></label>
+                                <span asp-validation-for="@Model.User.City" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.State" class="form-control" autocomplete="state" aria-required="true" />
+                                <label asp-for="@Model.User.State"></label>
+                                <span asp-validation-for="@Model.User.State" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.PostalCode" class="form-control" autocomplete="postal code" aria-required="true" />
+                                <label asp-for="@Model.User.PostalCode"></label>
+                                    <span asp-validation-for="@Model.User.PostalCode" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.OrganisationName" class="form-control" autocomplete="name" aria-required="true" />
+                                <label asp-for="@Model.User.OrganisationName"></label>
+                                <span asp-validation-for="@Model.User.OrganisationName" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.Website" class="form-control" autocomplete="website" aria-required="true" />
+                                <label asp-for="@Model.User.Website"></label>
+                                <span asp-validation-for="@Model.User.Website" class="text-danger"></span>
+                                </div>
+                                <div class="form-floating">
+                                <input asp-for="@Model.User.Description" class="form-control" autocomplete="off" aria-required="true" />
+                                <label asp-for="@Model.User.Description"></label>
+                                <span asp-validation-for="@Model.User.Description" class="text-danger"></span>
+                                </div>
+
+                                
+                                <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+
+                        </div>       
+        </div>
+        }
+    </div>

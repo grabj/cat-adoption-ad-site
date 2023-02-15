@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using OnlyCatsWebapp.Areas.Identity.Data
+@using OnlyCatsWebapp.Core
+@model IEnumerable<OnlyCatsWebapp.Models.Cat>
+@inject UserManager<ApplicationUser> userManager
+
+@{
+    ViewData["Title"] = "Manage Cats";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage your cats</h2>
+
+<p>
+    <a asp-controller="Cat" asp-action="Create" class="btn btn-primary my-2">Add new cat</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model) {
+            @if (item.UserId == userManager.GetUserId(User) || User.IsInRole("Manager"))
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                        @item.DateAdded.ToString("yyyy-MM-dd")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CatId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CatId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CatId">Delete</a>
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>
+

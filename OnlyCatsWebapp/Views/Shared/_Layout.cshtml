@@ -1,0 +1,84 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using OnlyCatsWebapp.Areas.Identity.Data
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OnlyCats</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OCApp.styles.css" asp-append-version="true" />
+    <link rel="icon" href="~/lib/OClogo.ico"/>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-info border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="nav-link p-0" asp-area="" asp-controller="Home" asp-action="Index"><img alt="icon" id="icon" style="width:50px" class="img-rounded" src="~/lib/OC_logo.png" /></a>
+                    
+                <a class="nav-link text-white lead p-0" asp-area="" asp-controller="Home" asp-action="Index"> OnlyCats</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ps-3">
+                    <ul class="navbar-nav flex-grow-1 text-muted">
+
+                         @if(User.IsInRole("Administrator") || User.IsInRole("Manager"))
+                        {
+                                    <li class="nav-item">
+                                <span class="badge">Roles:</span>
+                                    </li>
+                                @if(User.IsInRole("Administrator")){
+                                    <li class="nav-item ">
+                                    <span class="badge badge-danger badge-pill">Administrator</span>
+                                    </li>
+                            }
+                                @if(User.IsInRole("Manager")){
+                                   <li class="nav-item ">
+                                    <span class="badge badge-danger badge-pill">Manager</span>
+                                    </li>
+                            }
+                                                        <li class="nav-item pe-3">
+                                <a class="nav-link btn btn-light text-dark" asp-controller="User" asp-action="Index">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-light text-dark" asp-controller="Cat" asp-action="Index">Cats</a>
+                            </li>
+                        }
+                         else if (User.IsInRole("User"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn-light btn nav-link" asp-area="" asp-controller="Cat" asp-action="Index">Your Cats</a>
+                            </li>
+                        }
+                        
+                        @*<li>
+                        <form class="form-inline my-2 my-lg-0" asp-controller="Cat" asp-action="Filter">
+                            <input name="searchString" type="text" class="form-control mr-sm-2" placeholder="Input keyword">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                        </form></li>*@
+                    </ul>
+
+                    
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

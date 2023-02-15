@@ -1,0 +1,54 @@
+﻿@model OnlyCatsWebapp.Models.CatViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Cat @Model.Cat.Name</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit" asp-controller="Cat" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Cat.CatId" />
+            <div class="form-group">
+                <label asp-for="Cat.Name" class="control-label"></label>
+                <input asp-for="Cat.Name" class="form-control" />
+                <span asp-validation-for="Cat.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cat.Description" class="control-label"></label>
+                <textarea asp-for="Cat.Description" id="Description" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Cat.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cat.Age" class="control-label"></label>
+                <select asp-for="Cat.Age"
+                        class="form-control"
+                        asp-items="Html.GetEnumSelectList<Age>()">
+                <option>@Model.Cat.Age</option>
+                </select>
+                <span asp-validation-for="Cat.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <p>Upload New File</p>
+                <div id="chooseFile"><input type="file" name="Photo" accept="image/*" /></div>
+            </div>
+             <div>
+                @Html.ActionLink("Back To List", nameof(Index), new { /* id=item.PrimaryKey */ }, new { @class = "btn btn-info" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary my-2" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,45 @@
+﻿@model ICollection<OnlyCatsWebapp.Models.Cat>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center m-4">
+    @if(!User.Identity.IsAuthenticated)
+    {
+        <h2>Welcome to the Cat Adoption Website!</h2>
+    }
+    else
+    {
+        <h3>Cats for adoption:</h3>
+    }
+</div>
+
+<div class="container">
+    @if (Model != null && Model.Any())
+    {
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var cat in Model)
+            {
+                <div class="col-sm-6 col-md-4">
+                    <div class="card position-relative">
+                        <img src=@cat.ImageLocation class="card-img-top" alt="Cat profile photo" />
+                        <div class="card-body">
+                            <h5 class="card-title">@cat.Name</h5>
+                            <p class="card-text">@cat.Description</p>
+                            <p class="card-text text-center"><small>@cat.DateAdded.ToString("dd MMMM yyyy")</small></p>
+                 
+                            <p class="card-text">
+                            <a class="btn btn-info w-100" asp-controller="Cat" asp-action="Details" asp-route-id="@cat.CatId" stretched-link>Details</a></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    }
+</div>
+
+
+
+
+

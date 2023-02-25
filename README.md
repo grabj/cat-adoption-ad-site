@@ -1,7 +1,3 @@
-### Musiałam opublikować tę aplikację poprzez nowe konto pod nowym adresem: https://ocapp.azurewebsites.net/
-16 lutego skończyła mi się subskrybcja na azure:
-![Zrzut ekranu 2023-02-18 075656](https://user-images.githubusercontent.com/96183391/220279145-0ca48c03-a53b-46c4-b30d-83cac72c1ff5.png)
-
 ## Cel i zakres projektu
 Celem projektu jest utworzenie aplikacji webowej służącej jako portal do zamieszczania ogłoszeń przez schroniska, kociarnie, osoby prywatne, itp., z kotami do adopcji, które będą mogły przeglądać niezalogowane osoby prywatne zainteresowane adopcją. Dane kontaktowe umieszczone w ogłoszeniach pozwolą na pośredniczenie w procesie adopcji. 
 Na stronie głównej każdego zalogowanego użytkownika wyświetlane będą podstawowe informacje na jego temat, które zostaną automatycznie uzupełnione w momencie utworzenia konta. Przypisana zostanie także rola „User”. Użytkownik będzie miał możliwość edycji danych, hasła oraz usunięcia konta poprzez prywatną podstronę „Manage”. 
@@ -15,22 +11,8 @@ Do stworzenia rejestracji, logowania itd. wykorzystano obiekt szkieletowy Tożsa
 Aplikacja posiada tylko jeden zdefiniowany rodzaj użytkownika: ApplicationUser, który dziedziczy z wygenerowanej wcześniej klasy IdentityUser.
 W celu przypisania funkcjonalności do odpowiednich użytkowników stworzono role: Administrator, Manager i User. Odpowiednie role przypisywane są przez administatora na stronie służącej również do zarządzania użytkownikami, do czego mają dostęp administrator i manager. Tę funkcjonalność uzyskano z wykorzystaniem dwóch wzorców projektowych: repozytorium – do zapisywania i wczytywania danych w bazie danych, oraz wzorca Unit of work - ten wzorzec pozwolił zachować pojedynczy kontekst bazy danych.
 ## Najważniejsze funkcjonalności użytkowników i ról:
-1. Gość:
-•	rejestracja,
-•	logowanie,
-•	przeglądanie ogłoszeń,
-2. Użytkownik:
-•	wylogowywanie,
-•	zmiana hasła,
-•	edycja danych konta,
-•	usunięcie własnego ogłoszenia.
- - Użytkownik (rola User):
-  •	dodawanie własnych ogłoszeń,
-  •	edycja ogłoszenia,
-  •	usunięcie ogłoszenia.
- - Manager (rola):
-  •	edycja użytkowników,
-  •	przypisywanie i odbieranie ról użytkownikom,
-  •	edycja, usuwanie wszystkich ogłoszeń.
- - Administrator (rola):
-  •	usuwanie użytkowników.
+1. **Gość**: rejestracja, logowanie, przeglądanie ogłoszeń.
+2. **Użytkownik**: wylogowywanie, zmiana hasła, edycja danych konta, usunięcie własnego ogłoszenia, otrzymywanie roli.
+   - **Rola User**: dodawanie własnych ogłoszeń, edycja ogłoszenia, usunięcie ogłoszenia.
+   - **Rola Manager**: edycja użytkowników, przypisywanie i odbieranie ról użytkownikom, edycja, usuwanie wszystkich ogłoszeń.
+   - **Rola Administrator**: usuwanie użytkowników.

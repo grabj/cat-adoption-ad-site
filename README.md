@@ -1,9 +1,14 @@
+<img align="right" src="https://raw.githubusercontent.com/grabj/cat-adoption-ad-website/7dc5e8e85914990dce209730934f9d1ed48a21f2/OnlyCatsWebapp/wwwroot/lib/OC_logo.png" width="20%" alt="OnlyCats site logo" />
+
+# OnlyCats - Portal ogłoszeniowy dla kotów do adopcji
+
 ## Cel i zakres projektu
-Celem projektu jest utworzenie aplikacji webowej służącej jako portal do zamieszczania ogłoszeń przez schroniska, kociarnie, osoby prywatne, itp., z kotami do adopcji, które będą mogły przeglądać niezalogowane osoby prywatne zainteresowane adopcją. Dane kontaktowe umieszczone w ogłoszeniach pozwolą na pośredniczenie w procesie adopcji. 
+Celem projektu jest utworzenie aplikacji webowej służącej jako portal do zamieszczania ogłoszeń przez schroniska, kociarnie, osoby prywatne, itp., z kotami do adopcji, które będą mogły przeglądać niezalogowane osoby prywatne zainteresowane adopcją. Dane kontaktowe umieszczone w ogłoszeniach pozwolą na pośredniczenie w procesie adopcji.
 Na stronie głównej każdego zalogowanego użytkownika wyświetlane będą podstawowe informacje na jego temat, które zostaną automatycznie uzupełnione w momencie utworzenia konta. Przypisana zostanie także rola „User”. Użytkownik będzie miał możliwość edycji danych, hasła oraz usunięcia konta poprzez prywatną podstronę „Manage”. 
 Każdy z rolą użytkownika będzie miał możliwość dodawania nowych ogłoszeń z przeznaczonymi im osobnymi podstronami, którymi będzie mógł zarządzać (edytować, usuwać, tworzyć). 
 Użytkownik z rolą „Manager” będzie miał możliwość edycji i usuwania podstron zamieszczonych przez użytkowników, a także edycji ich danych. Dostępne dla niego będą specjalne widoki z danymi zarejestrowanych użytkowników , przypisywanie i odbieranie ról użytkownikom, edycję ich danych oraz, oraz wszystkimi ogłoszeniami. Rola „Administrator” będzie umożliwiała usuwanie kont.
 Każdy widok aplikacji będzie wyświetlany z uwzględnieniem rozmiaru ekranu urządzenia, na którym zostanie uruchomiony.
+
 ## Implementacja:
 Aplikacja została stworzona za pomocą aplikacji Microsoft Visual Studio z wersją .Net Core . Wymagane pakiety posiadały wersję nie wyższą niż 6.13.
 Aplikację, wraz z bazą danych opublikowano poprzez usługę chmurową Microsoft Azure.
